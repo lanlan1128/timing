@@ -1,0 +1,2 @@
+Error: Command failed: mshta "javascript:var wshYesNoDialog = 0; var wshQuestionMark = 64; var vbSystemModal = 4096; var content = "到点休息一下啦~^^o^^~\n>喝一杯水，补充水分\t\t\t\t\t\n\n\n\n\n\n\n"; var sh=new ActiveXObject("WScript.Shell"); sh.Popup(content, 5, "温馨提示", wshYesNoDialog + vbSystemModal + wshQuestionMark);close()"
+ϵͳ�Ҳ���ָ����·����
