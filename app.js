@@ -2,6 +2,7 @@ var schedule = require("node-schedule");
 var cp = require("child_process");
 var path = require("path");
 var fs = require("fs");
+var { convertTimeToSecond } = require("./utils/time");
 var config = JSON.parse(
   fs.readFileSync(path.join(process.cwd(), "./assets/setting.json"))
 );
@@ -12,9 +13,18 @@ var {
   minute,
   date = [],
   month = [],
+  delay,
   title = "",
   content = "",
 } = config || {};
+
+// 处理hour
+if (minute == 0) {
+  --hour[0][0];
+  --hour[0][1];
+  --hour[1][0];
+  --hour[1][1];
+}
 
 function timingBreak() {
   var rule = new schedule.RecurrenceRule();
@@ -52,11 +62,13 @@ function timingBreak() {
 
     // exp2: ActiveXObject示例
     cp.exec(
-      'mshta "javascript:var wshYesNoDialog = 0; var wshQuestionMark = 64; var vbSystemModal = 4096; var content = ' +
+      'mshta "javascript:var wshYesNoDialog = 0;  var wshExclamationMark = 48; var vbSystemModal = 4096; var content = ' +
         JSON.stringify(content) +
-        '; var sh=new ActiveXObject("WScript.Shell"); sh.Popup(content, 5, ' +
+        '; var sh=new ActiveXObject("WScript.Shell"); sh.Popup(content, ' +
+        convertTimeToSecond(delay) +
+        ", " +
         JSON.stringify(title) +
-        ', wshYesNoDialog + vbSystemModal + wshQuestionMark);close()"',
+        ', wshYesNoDialog + vbSystemModal + wshExclamationMark);close()"',
       function (err, stdout, stderr) {
         if (err) {
           fs.writeFileSync("log.log", err.toString());
