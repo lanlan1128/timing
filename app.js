@@ -4,7 +4,10 @@ var path = require("path");
 var fs = require("fs");
 var { convertTimeToSecond } = require("./utils/time");
 var config = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "./assets/setting.json"))
+  fs
+    .readFileSync(path.join(process.cwd(), "./assets/setting.json"))
+    .toString()
+    .trim()
 );
 // var config = require("./assets/setting");
 var {
@@ -17,14 +20,6 @@ var {
   title = "",
   content = "",
 } = config || {};
-
-// 处理hour
-if (minute == 0) {
-  --hour[0][0];
-  --hour[0][1];
-  --hour[1][0];
-  --hour[1][1];
-}
 
 function timingBreak() {
   var rule = new schedule.RecurrenceRule();

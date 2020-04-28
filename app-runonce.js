@@ -4,7 +4,10 @@ var path = require("path");
 var fs = require("fs");
 var { convertTimeToSecond } = require("./utils/time");
 var config = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "./assets/setting.json"))
+  fs
+    .readFileSync(path.join(process.cwd(), "./assets/setting.json"))
+    .toString()
+    .trim()
 );
 var { hour = [], minute = [], delay, title = "", content = "" } = config || {};
 var startTime = new Date();
@@ -44,7 +47,7 @@ function timingBreak() {
     cp.exec(
       'mshta "javascript:var wshYesNoDialog = 0; var wshExclamationMark = 48; var vbSystemModal = 4096; var content = ' +
         JSON.stringify(content) +
-        '; var sh=new ActiveXObject("WScript.Shell"); sh.Popup(content, 5, ' +
+        '; var sh=new ActiveXObject("WScript.Shell"); sh.Popup(content, ' +
         convertTimeToSecond(delay) +
         ", " +
         JSON.stringify(title) +
