@@ -21,7 +21,7 @@ function timingBreak() {
   // rule.month = [new schedule.Range(0, 11)];
   rule.hour = [new schedule.Range(0, 23)];
   if (typeof minute === "object") {
-    rule.minute = [new schedule.Range(minute[0][0], minute[0][1])];
+    rule.minute = [minute[0], minute[1]];
   } else {
     rule.minute = minute;
   }

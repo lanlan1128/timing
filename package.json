@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": "./app.js",
+  "bin": "./app-runonce.js",
   "scripts": {
     "start": "node app.js",
     "start-runonce": "node app-runonce.js",
