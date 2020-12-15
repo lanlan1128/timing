@@ -56,7 +56,6 @@ function timingBreak() {
     // );
 
     // exp2: ActiveXObject示例
-    console.log("ff");
     cp.exec(
       'mshta "javascript:var wshYesNoDialog = 0;  var wshExclamationMark = 48; var vbSystemModal = 4096; var content = ' +
         JSON.stringify(content) +
