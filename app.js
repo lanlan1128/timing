@@ -34,7 +34,7 @@ function timingBreak() {
     new schedule.Range(hour[1][0], hour[1][1]),
   ];
   if (typeof minute === "object") {
-    rule.minute = [new schedule.Range(minute[0][0], minute[0][1])];
+    rule.minute = [minute[0], minute[1]];
   } else {
     rule.minute = minute;
   }
@@ -56,6 +56,7 @@ function timingBreak() {
     // );
 
     // exp2: ActiveXObject示例
+    console.log("ff");
     cp.exec(
       'mshta "javascript:var wshYesNoDialog = 0;  var wshExclamationMark = 48; var vbSystemModal = 4096; var content = ' +
         JSON.stringify(content) +
